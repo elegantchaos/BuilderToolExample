@@ -4,9 +4,10 @@
 // For licensing terms, see http://elegantchaos.com/license/liberal/.
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+import Foundation
 
-print("I'm an example build tool.")
-if CommandLine.argc > 1 {
-  let phase = CommandLine.arguments[1]
-  print("This is the \(phase) phase.")
+if let stage = ProcessInfo.processInfo.environment["BUILDER_STAGE"] {
+  print("Example tool ran for stage \(stage).")
+} else {
+  print("Example tool ran for unknown stage.")
 }
