@@ -6,8 +6,9 @@
 
 import Foundation
 
+let args = CommandLine.arguments
 if let stage = ProcessInfo.processInfo.environment["BUILDER_STAGE"] {
-  print("Example tool ran for stage \(stage).")
+  print("Stage \(stage). Args:\(args[1...])")
 } else {
-  print("Example tool ran for unknown stage.")
+  print("Unknown stage.")
 }
