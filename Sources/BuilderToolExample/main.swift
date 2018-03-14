@@ -6,9 +6,16 @@
 
 import Foundation
 
-let args = CommandLine.arguments
+let args = CommandLine.arguments[1...]
+let argString = (args.count > 0) ? " Args:\(args)." : ""
+#if example
+let exString = " #if example was true."
+#else
+let exString = ""
+#endif
+
 if let stage = ProcessInfo.processInfo.environment["BUILDER_STAGE"] {
-  print("Stage \(stage). Args:\(args[1...])")
+  print("Stage \(stage).\(argString)\(exString)")
 } else {
   print("Unknown stage.")
 }
